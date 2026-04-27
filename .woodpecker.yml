@@ -1,0 +1,24 @@
+when:
+  event: [push]
+  branch: [main]
+
+steps:
+  deploy:
+    image: amazon/aws-cli
+    environment:
+      AWS_REGION: us-east-1
+      INSTANCE_ID: i-0965c7b5c90528b64
+    commands:
+      - ROLE=$(curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/)
+      - CREDS=$(curl -s http://169.254.169.254/latest/meta-data/iam/security-credentials/$ROLE)
+      - export AWS_ACCESS_KEY_ID=$(echo $CREDS | python3 -c "import sys,json;d=json.load(sys.stdin);print(d['AccessKeyId'])")
+      - export AWS_SECRET_ACCESS_KEY=$(echo $CREDS | python3 -c "import sys,json;d=json.load(sys.stdin);print(d['SecretAccessKey'])")
+      - export AWS_SESSION_TOKEN=$(echo $CREDS | python3 -c "import sys,json;d=json.load(sys.stdin);print(d['Token'])")
+      - >
+        aws ssm send-command
+        --region $AWS_REGION
+        --instance-ids $INSTANCE_ID
+        --document-name AWS-RunShellScript
+        --comment "Deploy landing-kaia ${CI_COMMIT_SHA}"
+        --parameters commands='["bash /home/ubuntu/projects/Kaia/landing-kaia/infra/scripts/deploy-landing.sh"]'
+        --output text --query Command.CommandId

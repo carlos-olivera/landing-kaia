@@ -1,0 +1,7 @@
+services:
+  landing:
+    image: landing-kaia:latest
+    container_name: landing-kaia
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8083:80"

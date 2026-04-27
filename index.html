@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#05070D" />
+  <meta name="description" content="KAIA — Más que LLM, son herramientas y skills. Un ecosistema agéntico completo." />
+  <title>KAIA — No es un bot</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles/main.css" />
+
+  <!-- Three.js (CDN, ES modules) -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- ====================== Background layers ====================== -->
+  <div class="bg" aria-hidden="true">
+    <div class="bg__gradient"></div>
+    <div class="bg__noise"></div>
+
+    <!-- Bokeh / lens flare layer (pure CSS, animated) -->
+    <div class="bokeh">
+      <span class="bokeh__dot b1"></span>
+      <span class="bokeh__dot b2"></span>
+      <span class="bokeh__dot b3"></span>
+      <span class="bokeh__dot b4"></span>
+      <span class="bokeh__dot b5"></span>
+      <span class="bokeh__dot b6"></span>
+      <span class="bokeh__dot b7"></span>
+      <span class="bokeh__dot b8"></span>
+      <span class="bokeh__dot b9"></span>
+      <span class="bokeh__dot b10"></span>
+      <span class="bokeh__dot b11"></span>
+      <span class="bokeh__dot b12"></span>
+      <span class="bokeh__dot b13"></span>
+      <span class="bokeh__dot b14"></span>
+      <span class="bokeh__dot b15"></span>
+      <span class="bokeh__dot b16"></span>
+    </div>
+
+    <!-- Long horizontal lens streak -->
+    <div class="lens-streak"></div>
+
+    <!-- Decorative circuit lines (SVG) -->
+    <svg class="circuit circuit--top" viewBox="0 0 600 300" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 40 L180 40 L240 100 L420 100 L470 60 L600 60"
+            fill="none" stroke="rgba(0,255,198,0.40)" stroke-width="1" stroke-dasharray="3 4" />
+      <circle cx="180" cy="40"  r="2.5" fill="#00FFC6" />
+      <circle cx="420" cy="100" r="2.5" fill="#00FFC6" />
+      <circle cx="600" cy="60"  r="2.5" fill="#00FFC6" />
+    </svg>
+
+    <svg class="circuit circuit--bottom" viewBox="0 0 600 300" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 200 L150 200 L210 260 L360 260 L420 200 L600 200"
+            fill="none" stroke="rgba(122,92,255,0.35)" stroke-width="1" stroke-dasharray="3 4" />
+      <circle cx="210" cy="260" r="2.5" fill="#7A5CFF" />
+      <circle cx="420" cy="200" r="2.5" fill="#7A5CFF" />
+    </svg>
+  </div>
+
+  <!-- ====================== Page card ====================== -->
+  <main class="page">
+    <!-- Navigation -->
+    <header class="nav" role="banner">
+      <button
+        class="nav__hamburger"
+        type="button"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        id="hamburger"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav__links" aria-label="Principal">
+        <ul>
+          <li><a href="#home">Home</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Mobile slide-in menu -->
+    <aside
+      class="mobile-menu"
+      id="mobile-menu"
+      aria-hidden="true"
+      aria-label="Navegación móvil"
+    >
+      <button class="mobile-menu__close" type="button" aria-label="Cerrar menú" id="menu-close">×</button>
+      <nav aria-label="Móvil principal">
+        <ul>
+          <li><a href="#home">Home</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <div class="menu-backdrop" id="menu-backdrop" hidden></div>
+
+    <!-- Hero -->
+    <section class="hero" id="home" aria-label="Inicio">
+      <div class="hero__text">
+        <h1 class="hero__title">
+          <span class="line line--1">No es un bot</span>
+          <span class="line line--2">Es <span class="text-gradient">KAIA</span></span>
+        </h1>
+        <p class="hero__copy line line--3">
+          Más que LLM son herramientas, skills, KIA es un ecosistema
+          agéntico completo.
+        </p>
+        <a href="#" class="cta line line--4">
+          <span>Muy pronto&hellip;</span>
+        </a>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <div class="brain">
+          <canvas id="brain-canvas"></canvas>
+          <div class="brain__label" aria-hidden="true">
+            <span class="brain__label-3d">Ai</span>
+          </div>
+          <div class="brain__glow"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="scripts/main.js" defer></script>
+  <script type="module" src="scripts/brain.js"></script>
+</body>
+</html>
