@@ -7,9 +7,8 @@ metadata:
   annotations:
     github.com/project-slug: carlos-olivera/landing-kaia
     backstage.io/techdocs-ref: dir:.
-  tags:
-    - static
-    - nginx
+    aws/cloudwatch-alarms: kaia-landing-health,kaos-server-status-check
+  tags: [static, nginx]
   links:
     - url: https://kaialatam.com
       title: Production
