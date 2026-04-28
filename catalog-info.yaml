@@ -1,0 +1,22 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: landing-kaia
+  title: Kaia Landing Page
+  description: Main landing page for kaialatam.com — static nginx site
+  annotations:
+    github.com/project-slug: carlos-olivera/landing-kaia
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - static
+    - nginx
+  links:
+    - url: https://kaialatam.com
+      title: Production
+      icon: web
+spec:
+  type: website
+  lifecycle: production
+  owner: carlos-olivera
+  system: kaia-platform
+
